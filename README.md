@@ -20,7 +20,7 @@ This project is a pizza sales analysis using SQL and Power BI.
 ## Files
 
 - `pizza_sales.csv` – Dataset
-- `Pizza_Sales_SQL_Queries.sql` – SQL queries
+- `SQL_Queries.sql` – SQL queries
 - `Pizza_sales_report.pbix` – Power BI dashboard
 
 ## Dashboard
