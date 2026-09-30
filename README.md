@@ -1,19 +1,17 @@
-# Pizza Sales Analysis
+# Pizza Sales Analysis: SQL Server and Power BI
 
-SQL Server analysis and Power BI dashboard for a year of pizza sales at a single restaurant. The SQL queries calculate the core sales KPIs and break sales down by day, month, category, size and pizza. The Power BI report presents the results.
+Analysis of a full year of sales for a single pizza restaurant. SQL Server queries calculate the core sales KPIs and break sales down by day, month, category, size and pizza. A two-page Power BI report presents the same results.
+
+## Dashboard Preview
+
+![Home page](images/home.png)
+![Best and worst sellers](images/best-worst-sellers.png)
 
 ## Dataset
 
-- 48,620 order lines from 21,350 orders
-- 1 January 2015 to 31 December 2015
-- 32 pizza types across 4 categories (Classic, Supreme, Chicken, Veggie) and 5 sizes (S, M, L, XL, XXL)
-- Columns include order ID, date, time, pizza name, category, size, quantity, unit price and total price
-
-## Tools Used
-
-- SQL Server
-- Power BI
-- CSV
+- 48,620 order lines from 21,350 orders, 1 January 2015 to 31 December 2015
+- 32 pizzas across 4 categories (Classic, Supreme, Chicken, Veggie) and 5 sizes (S, M, L, XL, XXL)
+- Columns: pizza ID, order ID, pizza name ID, quantity, order date, order time, unit price, total price, size, category, ingredients, pizza name
 
 ## Key Metrics
 
@@ -27,11 +25,11 @@ SQL Server analysis and Power BI dashboard for a year of pizza sales at a single
 
 ## Key Findings
 
-- **Friday is the busiest day** with 3,538 orders. Sunday is the slowest with 2,624.
+- **Friday is the busiest day** with 3,538 orders, followed by Thursday (3,239) and Saturday (3,158). Sunday is the slowest with 2,624.
 - **July is the busiest month** with 1,935 orders. October is the slowest with 1,646.
-- **Large pizzas bring in the most revenue** at 45.9% of the total, followed by Medium (30.5%) and Small (21.8%). XL and XXL together account for under 2%.
-- **Revenue is spread evenly across categories.** Classic leads with 26.9% and Veggie is lowest with 23.7%.
-- **Chicken pizzas top the revenue ranking.** The Thai Chicken (43,434), Barbecue Chicken (42,768) and California Chicken (41,410) are the top three.
+- **Large pizzas bring in the most revenue** at 45.9%, followed by Medium (30.5%) and Small (21.8%). XL and XXL together are under 2%.
+- **Categories are close.** Classic leads at 26.9%, then Supreme (25.5%), Chicken (24.0%) and Veggie (23.7%).
+- **Chicken pizzas take the top three revenue spots:** Thai Chicken (43,434), Barbecue Chicken (42,768) and California Chicken (41,410).
 - **The Classic Deluxe sells the most pizzas** (2,453 units).
 - **The Brie Carre is the weakest seller.** It has the lowest revenue (11,588) and the lowest quantity sold (490).
 - **January category split:** Classic 26.7%, Supreme 25.7%, Veggie 24.4%, Chicken 23.2%.
@@ -39,23 +37,28 @@ SQL Server analysis and Power BI dashboard for a year of pizza sales at a single
 
 ## SQL Analysis
 
-The queries in `SQL/SQL_Queries.sql` cover:
+The queries in `SQL/SQL_Queries.sql` (SQL Server) cover:
 
 1. Total revenue, average order value, total pizzas sold, total orders, average pizzas per order
 2. Orders by day of the week and by month
-3. Percentage of sales by pizza category (January)
-4. Percentage of sales by pizza size (Q1)
+3. Share of sales by pizza category for January
+4. Share of sales by pizza size for Q1
 5. Top 5 and bottom 5 pizzas by revenue, quantity and number of orders
 
-SQL concepts used: aggregate functions, `COUNT(DISTINCT)`, `GROUP BY`, `ORDER BY`, `TOP`, subqueries, `CAST`, `DATENAME` and `DATEPART`.
+SQL used: aggregate functions, `COUNT(DISTINCT)`, `GROUP BY`, `TOP`, subqueries, `CAST`, `DATENAME`, `DATEPART`.
 
-## Power BI Dashboard
+## Power BI Report
 
-`PowerBI/Pizza_sales_report.pbix` contains the interactive report built on the same dataset.
+`PowerBI/Pizza_sales_report.pbix` has two pages with page navigation between them:
+
+- **Home:** KPI cards, orders by day and month, sales by category and size
+- **Best/Worst Sellers:** top and bottom pizzas by revenue, quantity and orders
+
+The report uses DAX measures for Total Revenue, Total Orders, Total Pizzas Sold, Average Order Value and Average Pizzas Per Order, plus slicers for date and pizza category.
 
 ## Repository Structure
 
-```
+```text
 Pizza-Sales-Analysis-SQL-Power-BI/
 ├── Dataset/
 │   └── pizza_sales.csv
@@ -63,15 +66,19 @@ Pizza-Sales-Analysis-SQL-Power-BI/
 │   └── SQL_Queries.sql
 ├── PowerBI/
 │   └── Pizza_sales_report.pbix
+├── images/
+│   ├── home.png
+│   └── best-worst-sellers.png
 └── README.md
 ```
 
 ## How to Use
 
 1. Import `pizza_sales.csv` into SQL Server as a table named `pizza_sales`. Set `order_date` to a `DATE` type (the file uses dd-mm-yyyy).
-2. Run the queries in `SQL_Queries.sql`.
-3. Open the `.pbix` file in Power BI Desktop to explore the dashboard.
+2. Run the queries in `SQL_Queries.sql` one at a time.
+3. Open the `.pbix` file in Power BI Desktop.
 
 ## Author
 
-Hrithik Doiphode
+**Hrithik Doiphode**
+GitHub: https://github.com/Hrithikdoi
