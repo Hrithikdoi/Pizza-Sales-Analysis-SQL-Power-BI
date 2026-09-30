@@ -4,8 +4,9 @@ Analysis of a full year of sales for a single pizza restaurant. SQL Server queri
 
 ## Dashboard Preview
 
-![Home page]\(images/home.png)
-![Best and worst sellers]\(images/best-worst-sellers.png)
+![Home page](images/home.png)
+
+![Best and worst sellers](images/best-worst-sellers.png)
 
 ## Dataset
 
